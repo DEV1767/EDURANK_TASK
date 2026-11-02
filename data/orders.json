@@ -1,0 +1,78 @@
+{
+  "_meta": {
+    "reference_now": "2026-11-01T12:00:00Z",
+    "note": "All dates are relative to reference_now. Shift them if you run the test on another day. PROCESSING is an extra status added for the just-placed order."
+  },
+  "orders": [
+    {
+      "order_id": "ORD-1001", "customer_id": "CUST-201", "customer_email": "maria.santos@example.com",
+      "order_date": "2026-09-17T14:22:00Z", "status": "DELIVERED",
+      "items": [{"name": "AuraBuds Pro Wireless Earbuds", "sku": "ELC-AB-PRO", "price": 89.99, "qty": 1}],
+      "tracking_number": "1Z999AA10123456784", "delivery_date": "2026-09-22",
+      "_edge_case": "Placed 45 days ago, delivered 40 days ago. Outside the 30-day window (doc_1) but inside the legacy 60-day window (doc_2). Electronics."
+    },
+    {
+      "order_id": "ORD-1002", "customer_id": "CUST-202", "customer_email": "tom.brecker@example.com",
+      "order_date": "2026-11-01T11:50:00Z", "status": "PROCESSING",
+      "items": [{"name": "TrailMate Insulated Bottle 32oz", "sku": "HMG-TM-32", "price": 24.50, "qty": 2}],
+      "tracking_number": null, "delivery_date": null,
+      "_edge_case": "Placed 10 minutes ago. Still within the 30-minute cancellation window (doc_8)."
+    },
+    {
+      "order_id": "ORD-1003", "customer_id": "CUST-203", "customer_email": "priya.nair@example.com",
+      "order_date": "2026-10-27T09:05:00Z", "status": "DELIVERED",
+      "items": [{"name": "LumaDesk LED Lamp", "sku": "HMG-LD-LED", "price": 39.00, "qty": 1}, {"name": "Ceramic Mug Set (4pc)", "sku": "KIT-CM-4", "price": 28.00, "qty": 1}],
+      "tracking_number": "9400111899223344556677", "delivery_date": "2026-10-31",
+      "_edge_case": "Delivered yesterday. Damage report still inside the 48-hour window (doc_6)."
+    },
+    {
+      "order_id": "ORD-1004", "customer_id": "CUST-204", "customer_email": "jake.oduya@example.com",
+      "order_date": "2026-10-24T16:40:00Z", "status": "IN_TRANSIT",
+      "items": [{"name": "PeakFlex Yoga Mat", "sku": "FIT-PF-YM", "price": 34.99, "qty": 1}],
+      "tracking_number": "TRK-PENDING-???", "delivery_date": null,
+      "_edge_case": "Invalid tracking number. The order cannot be tracked, and the status may be unreliable."
+    },
+    {
+      "order_id": "ORD-1005", "customer_id": "CUST-205", "customer_email": "elena.rossi@example.com",
+      "order_date": "2026-10-20T08:15:00Z", "status": "CANCELLED",
+      "items": [{"name": "SwiftCharge 65W GaN Charger", "sku": "ELC-SC-65", "price": 45.00, "qty": 1}],
+      "tracking_number": null, "delivery_date": null,
+      "_edge_case": "Cancelled within the 30-minute window. Refund already issued."
+    },
+    {
+      "order_id": "ORD-1006", "customer_id": "CUST-206", "customer_email": "david.kim@example.com",
+      "order_date": "2026-10-02T19:30:00Z", "status": "REFUND_PENDING",
+      "items": [{"name": "VoltEdge Smartwatch", "sku": "ELC-VE-SW", "price": 129.00, "qty": 1}],
+      "tracking_number": "1Z999AA10198765432", "delivery_date": "2026-10-07",
+      "_edge_case": "Return received 2026-10-26, refund pending. Electronics, so the $5 restocking fee applies. Customer may be asking about timing (5-7 business days)."
+    },
+    {
+      "order_id": "ORD-1007", "customer_id": "CUST-207", "customer_email": "aisha.khan@example.com",
+      "order_date": "2026-09-28T12:00:00Z", "status": "RETURNED",
+      "items": [{"name": "CozyKnit Throw Blanket", "sku": "HMG-CK-TB", "price": 42.00, "qty": 1}],
+      "tracking_number": "9400111899556677889900", "delivery_date": "2026-10-03",
+      "_edge_case": "Returned and refunded in full (non-electronics, no restocking fee)."
+    },
+    {
+      "order_id": "ORD-1008", "customer_id": "CUST-208", "customer_email": "liam.oconnor@example.ca",
+      "order_date": "2026-10-22T13:10:00Z", "status": "IN_TRANSIT",
+      "items": [{"name": "TrailMate Hiking Backpack 30L", "sku": "OUT-TM-BP30", "price": 79.00, "qty": 1}],
+      "tracking_number": "CA2026102288174X", "delivery_date": null,
+      "_edge_case": "Canadian destination. Customer pays customs duties (doc_4) even though the order is over $50."
+    },
+    {
+      "order_id": "ORD-1009", "customer_id": "CUST-209", "customer_email": "sofia.mendez@example.com",
+      "order_date": "2026-10-04T10:45:00Z", "status": "DELIVERED",
+      "items": [{"name": "NovaPods Noise-Canceling Headphones", "sku": "ELC-NP-NC", "price": 149.00, "qty": 1}],
+      "tracking_number": "1Z999AA10155512345", "delivery_date": "2026-10-08",
+      "_edge_case": "Delivered 24 days ago (inside the 30-day window). Electronics, so the $5 fee applies, not the 'free' legacy policy."
+    },
+    {
+      "order_id": "ORD-1010", "customer_id": "CUST-210", "customer_email": "noah.fischer@example.com",
+      "order_date": "2026-10-14T15:20:00Z", "status": "IN_TRANSIT",
+      "items": [{"name": "BrewBuddy Pour-Over Kit", "sku": "KIT-BB-PO", "price": 31.00, "qty": 1}],
+      "tracking_number": "9400111899778899001122", "delivery_date": null,
+      "_edge_case": "Shipped 2026-10-15, last tracking scan 2026-10-18. No movement for 14 days, so it qualifies as a lost package (doc_3)."
+    }
+  ]
+}
